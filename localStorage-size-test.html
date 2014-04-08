@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title> localStorage size test</title>
+	<script>
+		var str = ''
+		function addString(){
+			str += 'a'
+			document.getElementById('m').innerHTML = str.length/1024/1024
+			localStorage.setItem('x') = str
+		}
+
+		function init(){
+			setInterval(function(){
+				addString()
+			},10)
+		}
+	</script>
+</head>
+<body>
+	<h1>localStorage size test</h1>
+	<p>
+		<span id="m"></span>M
+	</p>
+</body>
+</html>
