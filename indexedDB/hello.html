@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ </head>
+
+ <body>
+  <script>
+	var indexedDB = window.indexedDB
+
+	var data = [{name: 'tom', age: 12},{name: 'jim', age: 20]
+
+	var request = indexedDB.open('user', 1)
+
+	request.onsuccess = function(evt){
+		db = request.result
+	}
+
+	request.onerror = function(evt){
+		console.log('IndexedDB error: '. evt.target.errorCode)
+	}
+
+	request.onupgradeneeded = function(evt){
+		var objStore = evt.currentTarget.result.createObjectStore('user', {keyPath: 'id', autoIncrement: true})
+
+		objStore.createIndex('name', 'title', {unique: false})
+		objStore.createIndex('age', 'age', {unique: false})
+
+		data.forEach(objStore.add)
+	}
+  </script>
+ </body>
+</html>
