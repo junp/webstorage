@@ -12,7 +12,7 @@
   <script>
 	var indexedDB = window.indexedDB
 
-	var data = [{name: 'tom', age: 12},{name: 'jim', age: 20]
+	var data = [{name: 'tom', age: 12},{name: 'jim', age: 20}]
 
 	var request = indexedDB.open('user', 1)
 
@@ -21,7 +21,7 @@
 	}
 
 	request.onerror = function(evt){
-		console.log('IndexedDB error: '. evt.target.errorCode)
+		console.log('IndexedDB error: ' + evt.target.errorCode)
 	}
 
 	request.onupgradeneeded = function(evt){
